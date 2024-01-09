@@ -5,6 +5,9 @@ import NavBar from "./components/NavBar";
 
 const App = () => {
   const [pokemonIndex, setPokemonIndex] = useState(0);
+  const handleClick = (index) => {
+    setPokemonIndex(index);
+  };
 
   const pokemonList = [
     {
@@ -35,9 +38,9 @@ const App = () => {
     <div>
       <PokemonCard pokemon={pokemonList[pokemonIndex]} />
       <NavBar
-        setPokemonIndex={setPokemonIndex}
-        pokemonIndex={pokemonIndex}
+        key={pokemonList.name}
         pokemonList={pokemonList}
+        onPokemonClick={handleClick}
       />
     </div>
   );

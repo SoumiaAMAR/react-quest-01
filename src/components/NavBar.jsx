@@ -1,22 +1,12 @@
 /* eslint-disable react/prop-types */
-const NavBar = ({ pokemonIndex, pokemonList, setPokemonIndex }) => {
-  const previousPokemon = () => {
-    setPokemonIndex((previousIndex) =>
-      previousIndex === 0 ? pokemonList.length - 1 : previousIndex - 1
-    );
-  };
-  const nextPokemon = () => {
-    setPokemonIndex((previousIndex) =>
-      previousIndex === pokemonList.lenght - 1 ? 0 : previousIndex + 1
-    );
-  };
+const NavBar = ({ pokemonList, onPokemonClick }) => {
   return (
     <div>
-      {" "}
-      {pokemonIndex > 0 && <button onClick={previousPokemon}>prècedent</button>}
-      {pokemonIndex < pokemonList.length - 1 && (
-        <button onClick={nextPokemon}>suivant</button>
-      )}
+      {pokemonList.map((pokemon, index) => (
+        <button key={index} onClick={() => onPokemonClick(index)}>
+          {pokemon.name}
+        </button>
+      ))}
     </div>
   );
 };
